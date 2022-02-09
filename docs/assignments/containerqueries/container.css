@@ -10,30 +10,81 @@ img {
 }
 
 section {
+  container-type: inline-size;
+  container-name: section;
   border: 2px solid gold;
+  animation: resize 10s ease-in-out alternate;
+  animation-iteration-count: 2;
+}
+
+section > div {
   margin: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
 }
 
+@container section size(min-width: 1000px) {
+  section > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
 article {
-  contain: layout style inline-size;
+  container-type: inline-size;
+  margin: 1rem;
 }
 
 article > div {
   width: 100%;
-  margin: 1rem auto;
   box-shadow: 0 0 8px rgb(128, 128, 128);
+  transition: all 0.5s ease-out;
 }
 
-@container (min-width: 200px) {
+div p {
+  padding: 1rem;
+}
+
+article:last-child {
+  display: none;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+  transition-delay: 2s;
+}
+
+input[type="checkbox"]:checked ~ section article:last-child {
+  display: block;
+  opacity: 1;
+}
+
+@container size(max-width: 300px) {
+  article:nth-child(2n) > div {
+    background-image: linear-gradient(to right, purple, blue);
+    color: white;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@container size(min-width: 450px) {
   article > div {
     display: flex;
-    background: green;
   }
+}
 
-  p {
-    color: green;
+@container size(min-width: 600px) {
+  article > div {
+    background: black;
+    color: white;
+  }
+}
+
+@keyframes resize {
+  from {
+    width: 200px;
+  }
+  to {
+    width: 100%;
   }
 }
