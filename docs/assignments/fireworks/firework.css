@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  background: rgb(44, 44, 53);
+  color: rgb(255, 231, 187);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.scene {
+  height: 600px;
+  width: 800px;
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin: auto;
+}
+
+.shell1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid yellow;
+  transform-origin: center;
+  animation: bang 2s ease-out 1s infinite alternate;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 10%,
+    rgba(170, 255, 101, 1) 10%,
+    rgba(170, 255, 101, 1) 12%,
+    rgba(255, 255, 255, 0) 12%,
+    rgba(249, 255, 244, 0) 30%,
+    rgba(170, 255, 101, 1) 30%,
+    rgba(170, 255, 101, 1) 32%,
+    rgba(255, 255, 255, 0) 32%,
+    rgba(249, 255, 244, 0) 50%
+  );
+}
+
+.shell {
+  position: relative;
+  left: 100%;
+}
+
+.shell2 span {
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin: 1rem;
+  background: greenyellow;
+
+  position: absolute;
+  transform: rotateZ(calc(var(--count) * 36deg));
+  transform-origin: 120%;
+}
+
+.shell2 span:nth-child(1) {
+  --count: 1;
+}
+.shell2 span:nth-child(2) {
+  --count: 2;
+}
+.shell2 span:nth-child(3) {
+  --count: 3;
+}
+.shell2 span:nth-child(4) {
+  --count: 4;
+}
+.shell2 span:nth-child(5) {
+  --count: 5;
+}
+.shell2 span:nth-child(6) {
+  --count: 6;
+}
+.shell2 span:nth-child(7) {
+  --count: 7;
+}
+.shell2 span:nth-child(8) {
+  --count: 8;
+}
+.shell2 span:nth-child(9) {
+  --count: 9;
+}
+
+@keyframes bang {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

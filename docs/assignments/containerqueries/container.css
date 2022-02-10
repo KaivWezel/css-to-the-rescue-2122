@@ -48,7 +48,7 @@ section {
   container-type: inline-size;
   container-name: section;
   border: 2px solid gold;
-  animation: resize 10s ease-in-out alternate;
+  /* animation: resize 10s ease-in-out alternate; */
   /* animation-iteration-count: 2; */
 }
 
