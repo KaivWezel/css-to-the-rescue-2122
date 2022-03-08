@@ -5,6 +5,48 @@
 	--white: rgb(230, 230, 230);
 	--white-dark: rgb(200, 200, 200);
 	--white-light: rgb(255, 255, 255);
+	--color1: rgb(17, 0, 250);
+	--color2: rgb(255, 238, 0);
+	--color3: hotpink;
+
+	--circle1: repeating-radial-gradient(
+		circle,
+		black,
+		black 20px,
+		var(--white) 20px,
+		var(--white) 40px,
+		black 40px,
+		black 60px,
+		var(--white) 60px,
+		var(--white) 80px,
+		black 80px
+	);
+
+	--circle2: repeating-radial-gradient(
+		circle,
+		var(--color1),
+		var(--color1) 20px,
+		var(--color2) 20px,
+		var(--color2) 40px,
+		var(--color1) 40px,
+		var(--color1) 60px,
+		var(--color2) 60px,
+		var(--color2) 80px,
+		var(--color1) 80px
+	);
+
+	--circle3: repeating-radial-gradient(
+		circle,
+		rgb(138, 136, 10),
+		rgb(0, 241, 229) 20px,
+		green 20px,
+		purple 40px,
+		rgb(241, 0, 201) 40px,
+		rgb(0, 241, 229) 60px,
+		green 60px,
+		purple 80px,
+		rgb(0, 241, 229) 80px
+	);
 }
 
 * {
@@ -29,20 +71,21 @@ main {
 	border: 1px solid gray;
 }
 
-article::after {
-	content: attr(data-shell);
-}
+/* ------------- */
+/* Markup shell1 */
+/* ------------- */
 
 article:nth-of-type(1) {
-	width: 40px;
-	height: 40px;
-	background: var(--white);
-	box-shadow: 4px 4px 10px var(--white-dark), -4px -4px 10px var(--white-light);
+	width: 20px;
+	height: 20px;
+	background: var(--black);
 	position: absolute;
-	top: 40%;
-	left: 40%;
+	top: 30%;
+	left: 60%;
+	animation: shell1 3s ease-out forwards;
 }
 
+/* positioning trails */
 article:nth-of-type(1) span {
 	display: block;
 	width: 200px;
@@ -51,20 +94,22 @@ article:nth-of-type(1) span {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%) rotateZ(calc(var(--count) * 45deg)) translateX(100%);
+	transform: translate(-50%, -50%) rotateZ(calc(var(--count) * 45deg))
+		translateX(60%);
 }
 
+/* Styling trails */
 article:nth-of-type(1) span::before {
 	content: "";
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: var(--white);
-	box-shadow: 3px 3px 6px var(--white-dark), -3px -3px 6px var(--white-light);
-	animation: shell1 2s ease;
-	transform-origin: left;
+	transform: scale(0, 1);
+	background: var(--black);
+	animation: explosion1 1s ease 3s forwards;
 }
 
+/* Defining variables for calculation */
 article:nth-of-type(1) span:nth-child(1) {
 	--count: 1;
 }
@@ -91,19 +136,207 @@ article:nth-of-type(1) span:nth-child(8) {
 }
 
 /* Animations */
-@keyframes shell1 {
+@keyframes explosion1 {
 	0% {
 		transform: scale(0, 1);
 		transform-origin: left;
 	}
 	50% {
 		transform: scale(1, 1);
+		transform-origin: left;
 	}
 	60% {
 		transform: scale(1, 1);
+		transform-origin: right;
 	}
 	100% {
 		transform: scale(0, 1);
 		transform-origin: right;
+	}
+}
+
+@keyframes shell1 {
+	0% {
+		top: 100%;
+		left: 20%;
+		transform: rotateZ(560deg);
+		border-radius: 0;
+	}
+	10% {
+		border-radius: 0;
+	}
+	45% {
+		border-radius: 50%;
+	}
+	50% {
+		border-radius: 0;
+	}
+	60% {
+		border-radius: 0;
+	}
+	65% {
+		border-radius: 50%;
+	}
+	95% {
+		border-radius: 50%;
+		background: var(--black);
+		transform: scale(1);
+	}
+	98% {
+		transform: scale(1.5);
+	}
+	100% {
+		top: 30%;
+		left: 60%;
+		transform: rotateZ(0deg) scale(1.5);
+		border-radius: 50%;
+		background: transparent;
+	}
+}
+
+/* ------------- */
+/* Markup shell2 */
+/* ------------- */
+
+article:nth-of-type(2) {
+	--rotation-step: 60deg;
+}
+
+article:nth-of-type(2) {
+	width: 20px;
+	height: 20px;
+	background: var(--black);
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(0deg);
+	animation: rotate 1s linear infinite;
+}
+
+article:nth-of-type(2):has(> input:checked) {
+	animation: rotate 13s ease-in-out infinite alternate;
+}
+
+article:nth-of-type(2) input {
+	position: absolute;
+	opacity: 0;
+}
+
+article:nth-of-type(2) label {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+article:nth-of-type(2) > p {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	pointer-events: none;
+	animation: grow 1s ease-out forwards;
+	animation-play-state: paused;
+}
+
+article:nth-of-type(2) button {
+	all: unset;
+	display: none;
+	position: absolute;
+	border: none;
+	/* overflow: hidden; */
+	width: 100%;
+	height: 100%;
+	transform-origin: center;
+	border-radius: 50%;
+	mix-blend-mode: difference;
+	background-position: center;
+	background-image: var(--circle2);
+	animation: hypno 9s linear 0s infinite alternate;
+}
+
+article:nth-of-type(2) input:checked ~ p {
+	animation-play-state: running, running;
+}
+
+article:nth-of-type(2) input:checked ~ p button {
+	display: block;
+}
+
+article:nth-of-type(2) button:nth-of-type(1) {
+	--rotation: calc(0 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(2) {
+	--rotation: calc(1 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(3) {
+	--rotation: calc(2 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(4) {
+	--rotation: calc(3 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(5) {
+	--rotation: calc(4 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(6) {
+	--rotation: calc(5 * var(--rotation-step));
+	transform: rotate(var(--rotation)) translateX(50%);
+}
+
+article:nth-of-type(2) button:nth-of-type(7) {
+	background-image: var(--circle3);
+	animation: grow2 13s ease-in-out infinite alternate;
+}
+
+@keyframes shell2 {
+}
+
+/* Animation for rotating shell + circles */
+@keyframes rotate {
+	from {
+		transform: translate(-50%, -50%) rotate(0%);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes grow {
+	from {
+		clip-path: circle(10%);
+	}
+	to {
+		clip-path: circle(40%);
+	}
+}
+
+@keyframes grow2 {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.4);
+	}
+}
+
+@keyframes hypno {
+	from {
+		transform: rotate(var(--rotation)) translateX(50%);
+	}
+	to {
+		transform: rotate(var(--rotation)) translateX(-50%);
 	}
 }

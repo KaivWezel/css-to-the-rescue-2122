@@ -12,7 +12,10 @@
 			<h1>firework show</h1>
 		</header>
 		<main>
-			<article data-shell="5">
+			<!-- Ipv article shell maken -> h2 geven zodat niet de hele inhoud beïnvloed wordt
+			of checkbox voor interactie													 -->
+			<section id="shell-selection"></section>
+			<article data-shell="1">
 				<span data-count="1"></span>
 				<span data-count="2"></span>
 				<span data-count="3"></span>
@@ -22,7 +25,19 @@
 				<span data-count="7"></span>
 				<span data-count="8"></span>
 			</article>
+			<article data-shell="2">
+				<input type="checkbox" name="shell2" id="shell2" />
+				<label for="shell2"></label>
+				<p>
+					<button></button>
+					<button></button>
+					<button></button>
+					<button></button>
+					<button></button>
+					<button></button>
+					<button></button>
+				</p>
+			</article>
 		</main>
-		<input type="range" name="demo" id="demo" max="30" />
 	</body>
 </html>
