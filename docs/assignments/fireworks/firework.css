@@ -398,6 +398,11 @@ nav ul {
 	list-style-type: none;
 	transform-origin: center;
 	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% -50%);
+
+	transform-style: preserve-3d;
 }
 
 nav ul:nth-child(1) {
@@ -415,13 +420,15 @@ nav ul:nth-child(4) {
 
 nav li {
 	--rotation-step: 45deg;
-	width: 10vw;
-	height: 3px;
-	background: green;
+	width: 20vw;
+	height: 10px;
+	background: var(--black-dark);
 	position: absolute;
 
 	transform-origin: left center;
-	transform: rotate(calc(var(--count) * var(--rotation-step))) translateX(10px);
+	transform: rotateZ(calc(var(--count) * var(--rotation-step))) translateX(10px);
+	transform-style: preserve-3d;
+	border-radius: 2rem;
 }
 
 nav li:nth-child(1) {
@@ -447,4 +454,32 @@ nav li:nth-child(7) {
 }
 nav li:nth-child(8) {
 	--count: 8;
+}
+
+nav li::before,
+nav li::after {
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background: var(--black-dark);
+	border-radius: 2rem;
+}
+
+nav li::before {
+	transform: rotateX(60deg);
+}
+
+nav li::after {
+	transform: rotateX(-60deg);
+}
+
+@keyframes {
+	0% {
+	}
+	50% {
+	}
+	100% {
+	}
 }
