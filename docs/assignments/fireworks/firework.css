@@ -88,7 +88,7 @@ article:nth-of-type(1) {
 /* positioning trails */
 article:nth-of-type(1) span {
 	display: block;
-	width: 200px;
+	width: 10vw;
 	height: 3px;
 	/* background: var(--white-dark); */
 	position: absolute;
@@ -203,19 +203,20 @@ article:nth-of-type(2) {
 }
 
 article:nth-of-type(2) {
+	position: absolute;
 	width: 20px;
 	height: 20px;
-	background: var(--black);
-	position: absolute;
 	top: 20%;
 	left: 50%;
 	transform: translate(-50%, -50%) rotate(0deg);
-	animation: rotate 1s linear infinite;
+	animation: shell2 5s ease-out;
 }
 
-article:nth-of-type(2):has(> input:checked) {
+/* Code only works in Safari TP  */
+
+/* article:nth-of-type(2):has(> input:checked) {
 	animation: rotate 13s ease-in-out infinite alternate;
-}
+} */
 
 article:nth-of-type(2) input {
 	position: absolute;
@@ -227,19 +228,31 @@ article:nth-of-type(2) label {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+
+	/* Used this to reuse animation */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	background: var(--black);
+	animation: rotate 1s linear infinite;
 }
 
 article:nth-of-type(2) > p {
 	position: relative;
-	width: 300px;
-	height: 300px;
+	width: 100%;
+	height: 100%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border-radius: 50%;
+
 	pointer-events: none;
-	animation: grow 1s ease-out forwards;
-	animation-play-state: paused;
+	background: var(--black);
+	clip-path: none;
+
+	animation: grow 1s ease-out forwards,
+		rotate 23s ease-in-out infinite alternate;
+	animation-play-state: paused, running;
 }
 
 article:nth-of-type(2) button {
@@ -259,6 +272,8 @@ article:nth-of-type(2) button {
 }
 
 article:nth-of-type(2) input:checked ~ p {
+	width: 300px;
+	height: 300px;
 	animation-play-state: running, running;
 }
 
@@ -274,6 +289,7 @@ article:nth-of-type(2) button:nth-of-type(1) {
 article:nth-of-type(2) button:nth-of-type(2) {
 	--rotation: calc(1 * var(--rotation-step));
 	transform: rotate(var(--rotation)) translateX(50%);
+	animation-delay: -9s;
 }
 
 article:nth-of-type(2) button:nth-of-type(3) {
@@ -284,6 +300,7 @@ article:nth-of-type(2) button:nth-of-type(3) {
 article:nth-of-type(2) button:nth-of-type(4) {
 	--rotation: calc(3 * var(--rotation-step));
 	transform: rotate(var(--rotation)) translateX(50%);
+	animation-delay: -9s;
 }
 
 article:nth-of-type(2) button:nth-of-type(5) {
@@ -294,14 +311,21 @@ article:nth-of-type(2) button:nth-of-type(5) {
 article:nth-of-type(2) button:nth-of-type(6) {
 	--rotation: calc(5 * var(--rotation-step));
 	transform: rotate(var(--rotation)) translateX(50%);
+	animation-delay: -9s;
 }
 
 article:nth-of-type(2) button:nth-of-type(7) {
 	background-image: var(--circle3);
-	animation: grow2 13s ease-in-out infinite alternate;
+	animation: grow2 9s ease-in-out infinite alternate;
 }
 
 @keyframes shell2 {
+	from {
+		top: 100%;
+	}
+	to {
+		top: 20%;
+	}
 }
 
 /* Animation for rotating shell + circles */
@@ -325,18 +349,18 @@ article:nth-of-type(2) button:nth-of-type(7) {
 
 @keyframes grow2 {
 	from {
-		transform: scale(1);
+		transform: scale(1.8);
 	}
 	to {
-		transform: scale(1.4);
+		transform: scale(0.6);
 	}
 }
 
 @keyframes hypno {
 	from {
-		transform: rotate(var(--rotation)) translateX(50%);
+		transform: rotate(var(--rotation)) translateX(10%);
 	}
 	to {
-		transform: rotate(var(--rotation)) translateX(-50%);
+		transform: rotate(var(--rotation)) translateX(60%);
 	}
 }
