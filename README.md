@@ -24,9 +24,9 @@
 <th>Week 2</th>
 <td>
 
-- [ ] Ideeën afmaken
-- [ ] Interactie bedenken
-- [ ] Oefenen met animeren voor explosies
+- [x] Ideeën afmaken
+- [x] Interactie bedenken
+- [x] Oefenen met animeren voor explosies
 
 </td>
 </tr>
@@ -34,9 +34,9 @@
 <th>Week 3</th>
 <td>
 
-- [ ] Eerste paar _explosies_ maken
-- [ ] Inschatten einddoel
-- [ ] Interactie implementeren
+- [x] Eerste paar _explosies_ maken
+- [x] Inschatten einddoel
+- [x] Interactie implementeren
 
 </td>
 </tr>
