@@ -13,9 +13,9 @@
 <th>Week 1</th>
 <td>
 
-- [ ] kennismaken CSS-technieken
-- [ ] Presentatie/kennismaking
-- [ ] Eindopdracht kiezen + schetsen
+- [x] kennismaken CSS-technieken
+- [x] Presentatie/kennismaking
+- [x] Eindopdracht kiezen + schetsen
 
 </td>
 
@@ -61,7 +61,7 @@ De uitdaging voor mij zit hem in het animeren, ik heb wel met transities gewerkt
 
 ### Schetsen/ideeën
 
-![CSS firework ideas](docs/img/css-ideas.jpg)
+<img src="docs/img/css-ideas.jpg" alt="css-ideetjes" width="400px"/>
 
 ---
 
@@ -107,3 +107,56 @@ Eerst in zwart-wit, toen met kleur en daarna gradients gebruikt om die kaleidosc
 </table>
 
 ### Vuurwerkje 3
+
+Ik ben deze week ook begonnen met mijn grote uitdaging: vuurwerk in 3D. Ik wil eigenlijk mijn eerste vuurwerkje namaken maar dan in 3D. In mijn hoofd bestond dit idee uit 3 stappen:
+
+1. Eenzelfde cirkel maken zoals in het eerste vuurwerkje.
+2. Deze cirkel dupliceren en roteren om de Y-as.
+3. Animeren dat de staarten uitbreiden en verdwijnen.
+
+Te beginnen met de cirkel was niet heel lastig. Daar heb ik een deel van mijn eerste vuurwerkje kunnen kopiëren.
+
+Hierna heb ik deze cirkel nog twee keer gemaakt en 60 graden gedraaid. Zo kreeg ik een gelijke verdeling van de bol die het uiteindelijk moet worden.
+
+```css
+nav li {
+	--rotation-step: 45deg;
+	width: 20vw;
+	height: 10px;
+	position: absolute;
+	border-radius: 2rem;
+
+	transform-origin: left;
+	transform: rotateZ(calc(var(--count) * var(--rotation-step)));
+	transform-style: preserve-3d;
+}
+
+nav li:nth-child(1) {
+	--count: 1;
+}
+nav li:nth-child(2) {
+	--count: 2;
+}
+nav li:nth-child(3) {
+	--count: 3;
+}
+nav li:nth-child(4) {
+	--count: 4;
+}
+nav li:nth-child(5) {
+	--count: 5;
+}
+nav li:nth-child(6) {
+	--count: 6;
+}
+nav li:nth-child(7) {
+	--count: 7;
+}
+nav li:nth-child(8) {
+	--count: 8;
+}
+```
+
+Om te zorgen dat dit ook nog 3D te zien is als je ronddraait om de bol heen moeten de staarten eigelijk cilinders worden/lijken.
+
+Hiervoor heb ik de `::before` en `::after` pseudo-elementen gebruikt. Deze heb ik gelijk gesteld aan de staarten (`li`), en gedraaid over de X-as zodat je als het ware een waaier krijgt van planes in 3D.
