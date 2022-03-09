@@ -71,6 +71,24 @@ main {
 	border: 1px solid gray;
 }
 
+main > input {
+	display: none;
+}
+
+main > input + label {
+	display: inline-block;
+	border-radius: 4px;
+	background: var(--white);
+	padding: 0.5rem;
+	margin: 1rem;
+	box-shadow: 6px 6px 10px var(--white-dark), -6px -6px 10px var(--white-light);
+}
+
+main > input:checked + label {
+	box-shadow: inset 6px 6px 10px var(--white-dark),
+		inset -6px -6px 10px var(--white-light);
+}
+
 /* ------------- */
 /* Markup shell1 */
 /* ------------- */
@@ -139,26 +157,9 @@ article:nth-of-type(1) span:nth-child(8) {
 	--count: 8;
 }
 
-/* Animations */
-@keyframes explosion1 {
-	0% {
-		transform: scale(0, 1);
-		transform-origin: left;
-	}
-	50% {
-		transform: scale(1, 1);
-		transform-origin: left;
-	}
-	60% {
-		transform: scale(1, 1);
-		transform-origin: right;
-	}
-	100% {
-		transform: scale(0, 1);
-		transform-origin: right;
-	}
-}
+/* Animations shell 1*/
 
+/* Animation shell1 flight */
 @keyframes shell1 {
 	0% {
 		top: 100%;
@@ -198,6 +199,26 @@ article:nth-of-type(1) span:nth-child(8) {
 	}
 }
 
+/* Animation for explosion */
+@keyframes explosion1 {
+	0% {
+		transform: scale(0, 1);
+		transform-origin: left;
+	}
+	50% {
+		transform: scale(1, 1);
+		transform-origin: left;
+	}
+	60% {
+		transform: scale(1, 1);
+		transform-origin: right;
+	}
+	100% {
+		transform: scale(0, 1);
+		transform-origin: right;
+	}
+}
+
 /* ------------- */
 /* Markup shell2 */
 /* ------------- */
@@ -208,7 +229,7 @@ article:nth-of-type(2) {
 
 input[name="shell2"]:checked ~ article:nth-of-type(2) {
 	display: block;
-	animation: shell2 5s ease-out;
+	animation: shell2 5s ease-out forwards;
 }
 
 article:nth-of-type(2) {
@@ -216,9 +237,17 @@ article:nth-of-type(2) {
 	position: absolute;
 	width: 20px;
 	height: 20px;
-	top: 20%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%) rotate(0deg);
+}
+
+article:nth-of-type(2)::before {
+	content: "Click me!";
+	display: block;
+	white-space: nowrap;
+	position: absolute;
+	transform: translate(-40%, -2rem);
 }
 
 /* Code only works in Safari TP  */
@@ -238,7 +267,7 @@ article:nth-of-type(2) label {
 	width: 100%;
 	height: 100%;
 
-	/* Used this to reuse animation */
+	/* Used this to reuse animation keyframes */
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -329,11 +358,11 @@ article:nth-of-type(2) button:nth-of-type(7) {
 }
 
 @keyframes shell2 {
-	from {
+	0% {
 		top: 100%;
 	}
-	to {
-		top: 20%;
+	100% {
+		top: 40%;
 	}
 }
 
@@ -349,7 +378,7 @@ article:nth-of-type(2) button:nth-of-type(7) {
 
 @keyframes grow {
 	from {
-		clip-path: circle(10%);
+		clip-path: circle(0%);
 	}
 	to {
 		clip-path: circle(40%);
@@ -378,7 +407,7 @@ article:nth-of-type(2) button:nth-of-type(7) {
 
 input[name="shell3"]:checked ~ article:nth-of-type(3) {
 	display: block;
-	animation: shell2 4s ease-out forwards;
+	animation: shell3 4s ease-out forwards;
 }
 
 article:nth-of-type(3) {
@@ -393,20 +422,45 @@ article:nth-of-type(3) {
 	perspective: 1000px;
 }
 
+article:nth-of-type(3) button {
+	position: absolute;
+	padding: 0.5rem;
+	background: var(--black-light);
+	color: var(--white);
+	border: none;
+}
+
+article > button:nth-child(1) {
+	left: -200px;
+}
+article > button:nth-child(2) {
+	right: -200px;
+}
+
 article nav {
 	width: 100%;
 	height: 100%;
 	transform-origin: center;
 	transform-style: preserve-3d;
 	perspective: 1000px;
+	animation: spin 7s linear infinite paused;
+}
+
+article > button:nth-child(1):active ~ nav {
+	animation-play-state: running;
+	animation-direction: normal;
+}
+article > button:nth-child(2):active ~ nav {
+	animation-play-state: running;
+	animation-direction: reverse;
 }
 
 @keyframes spin {
 	from {
-		transform: rotate(0);
+		transform: rotateY(0);
 	}
 	to {
-		transform: rotate(360deg, 9deg);
+		transform: rotateY(360deg);
 	}
 }
 
@@ -414,8 +468,8 @@ nav ul {
 	list-style-type: none;
 	transform-origin: center;
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	width: 100%;
+	height: 100%;
 
 	transform-style: preserve-3d;
 }
@@ -436,10 +490,12 @@ nav li {
 	height: 10px;
 	/* background: var(--black-dark); */
 	position: absolute;
+	top: 50%;
+	left: 50%;
 
-	transform-origin: left;
-	transform: rotateZ(calc(var(--count) * var(--rotation-step)));
 	transform-style: preserve-3d;
+	transform: translate(-50%, -50%)
+		rotate(calc(var(--count) * var(--rotation-step))) translateX(60%);
 	border-radius: 2rem;
 }
 
@@ -478,7 +534,7 @@ input[name="shell3"]:checked ~ article nav li::after {
 	background: var(--black-dark);
 	border-radius: 2rem;
 
-	animation: bang 3.5s cubic-bezier(0.21, 0.54, 0.62, 0.99) 4s;
+	animation: bang 8.5s cubic-bezier(0.21, 0.54, 0.62, 0.99) 4s normal forwards;
 }
 
 nav li::before {
@@ -489,6 +545,20 @@ nav li::before {
 nav li::after {
 	--rotation: -60deg;
 	transform: rotateX(-60deg) scale(0);
+}
+
+@keyframes shell3 {
+	0% {
+		top: 100%;
+	}
+	95% {
+		top: 40%;
+		background: var(--black);
+	}
+	100% {
+		top: 40%;
+		background: transparent;
+	}
 }
 
 @keyframes bang {
