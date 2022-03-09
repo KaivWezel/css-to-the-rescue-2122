@@ -69,6 +69,7 @@ main {
 	margin: auto;
 	position: relative;
 	border: 1px solid gray;
+	text-align: center;
 }
 
 main > input {
