@@ -185,3 +185,5 @@ Uiteindelijk ziet mijn laatste vuurwerkje er zo uit:
 
 Ik heb toen mijn interactie geïmplementeerd. Je kan elk vuurwerkje afzonderlijk afvuren met een knop bovenin het scherm.
 ![menu om vuurwerkjes af te schieten](docs/img/firework-menu.png)
+
+Mijn finale idee voor de 3D-vuurwerkbal is aardig gelukt maar nog niet af. Zo zie je dat bijvoorbeeld de staarten niet helemaal gelijk lopen in de bovenste ring. Een deel lijkt langer/hoger dan de anderen. Ik durf niet precies te zeggen hoe dat komt, maar daar kwam ik bij de animatie pas achter. Het is mij in die korte tijd niet geluk om daar een fix voor te vinden.
