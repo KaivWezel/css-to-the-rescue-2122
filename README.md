@@ -45,7 +45,7 @@
 <td>
 
 - [ ] Tweaken animaties
-- [ ] Interactie controleren
+- [x] Interactie controleren
 - [ ] Code finaliseren
 
 </td>
@@ -97,6 +97,8 @@ Ik ben gaan experimenteren met hoe je kleuren kan mixen en wat voor resultaten d
 De `mix-blend-mode` property is fantastisch voor het mixen van kleuren en biedt een hoop mogelijkheden voor dit vuurwerkje.
 
 Eerst in zwart-wit, toen met kleur en daarna gradients gebruikt om die kaleidoscoop zo vet mogelijk te krijgen.
+
+Op de kleuren ben ik vrij lang blijven hangen omdat ik alleen maar verschillende kleuren en combinaties aan het uitproberen was. Daarmee ben ik iets later begonnen aan mijn derde vuurwerkje.
 
 <table>
     <tr>
@@ -157,6 +159,29 @@ nav li:nth-child(8) {
 }
 ```
 
+(Custom prop `--rotation-step` was eigenlijk niet nodig maar bestond nog uit een eerdere poging)
+
 Om te zorgen dat dit ook nog 3D te zien is als je ronddraait om de bol heen moeten de staarten eigelijk cilinders worden/lijken.
 
 Hiervoor heb ik de `::before` en `::after` pseudo-elementen gebruikt. Deze heb ik gelijk gesteld aan de staarten (`li`), en gedraaid over de X-as zodat je als het ware een waaier krijgt van planes in 3D.
+
+```css
+input[name="shell3"]:checked ~ article nav li::before,
+input[name="shell3"]:checked ~ article nav li::after {
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background: var(--black-dark);
+	border-radius: 2rem;
+
+	animation: bang 8.5s cubic-bezier(0.21, 0.54, 0.62, 0.99) 4s normal forwards;
+}
+```
+
+Uiteindelijk ziet mijn laatste vuurwerkje er zo uit:
+![Derde vuurwerkje](docs/img/shell3.gif)
+
+Ik heb toen mijn interactie geïmplementeerd. Je kan elk vuurwerkje afzonderlijk afvuren met een knop bovenin het scherm.
+![menu om vuurwerkjes af te schieten](docs/img/firework-menu.png)
