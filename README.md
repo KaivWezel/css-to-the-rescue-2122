@@ -2,7 +2,7 @@
 
 ### CSS to the Rescue @cmda-minor-web 2021 - 2022
 
----
+## **live demo**: [Vuurwerkshow](https://kaivwezel.github.io/css-to-the-rescue-2122/)
 
 # Eindopdracht: Magische vuurwerkshow
 
