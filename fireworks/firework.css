@@ -83,6 +83,7 @@ main > input + label {
 	padding: 0.5rem;
 	margin: 1rem;
 	box-shadow: 6px 6px 10px var(--white-dark), -6px -6px 10px var(--white-light);
+	cursor: pointer;
 }
 
 main > input:checked + label {
@@ -93,6 +94,7 @@ main > input:checked + label {
 /* ------------- */
 /* Markup shell1 */
 /* ------------- */
+
 article:nth-of-type(1) {
 	display: none;
 	width: 20px;
@@ -156,68 +158,6 @@ article:nth-of-type(1) span:nth-child(7) {
 }
 article:nth-of-type(1) span:nth-child(8) {
 	--count: 8;
-}
-
-/* Animations shell 1*/
-
-/* Animation shell1 flight */
-@keyframes shell1 {
-	0% {
-		top: 100%;
-		left: 20%;
-		transform: rotateZ(560deg);
-		border-radius: 0;
-	}
-	10% {
-		border-radius: 0;
-	}
-	45% {
-		border-radius: 50%;
-	}
-	50% {
-		border-radius: 0;
-	}
-	60% {
-		border-radius: 0;
-	}
-	65% {
-		border-radius: 50%;
-	}
-	95% {
-		border-radius: 50%;
-		background: var(--black);
-		transform: scale(1);
-	}
-	98% {
-		transform: scale(1.5);
-	}
-	100% {
-		top: 30%;
-		left: 60%;
-		transform: rotateZ(0deg) scale(1.5);
-		border-radius: 50%;
-		background: transparent;
-	}
-}
-
-/* Animation for explosion */
-@keyframes explosion1 {
-	0% {
-		transform: scale(0, 1);
-		transform-origin: left;
-	}
-	50% {
-		transform: scale(1, 1);
-		transform-origin: left;
-	}
-	60% {
-		transform: scale(1, 1);
-		transform-origin: right;
-	}
-	100% {
-		transform: scale(0, 1);
-		transform-origin: right;
-	}
 }
 
 /* ------------- */
@@ -358,58 +298,9 @@ article:nth-of-type(2) button:nth-of-type(7) {
 	animation: grow2 9s ease-in-out infinite alternate;
 }
 
-@keyframes shell2 {
-	0% {
-		top: 100%;
-	}
-	100% {
-		top: 40%;
-	}
-}
-
-/* Animation for rotating shell + circles */
-@keyframes rotate {
-	from {
-		transform: translate(-50%, -50%) rotate(0%);
-	}
-	to {
-		transform: translate(-50%, -50%) rotate(360deg);
-	}
-}
-
-@keyframes grow {
-	from {
-		clip-path: circle(0%);
-	}
-	to {
-		clip-path: circle(40%);
-	}
-}
-
-@keyframes grow2 {
-	from {
-		transform: scale(1.8);
-	}
-	to {
-		transform: scale(0.8);
-	}
-}
-
-@keyframes hypno {
-	from {
-		transform: rotate(var(--rotation)) translateX(10%);
-	}
-	to {
-		transform: rotate(var(--rotation)) translateX(60%);
-	}
-}
-
-/* Styling shell 3 */
-
-input[name="shell3"]:checked ~ article:nth-of-type(3) {
-	display: block;
-	animation: shell3 4s ease-out forwards;
-}
+/* -------------- */
+/* Markup shell 3 */
+/* -------------- */
 
 article:nth-of-type(3) {
 	display: none;
@@ -421,6 +312,11 @@ article:nth-of-type(3) {
 	left: 50%;
 	transform-style: preserve-3d;
 	perspective: 1000px;
+}
+
+input[name="shell3"]:checked ~ article:nth-of-type(3) {
+	display: block;
+	animation: shell3 4s ease-out forwards;
 }
 
 article:nth-of-type(3) button {
@@ -488,6 +384,7 @@ nav ul:nth-child(4) {
 nav li {
 	--rotation-step: 45deg;
 	width: 20vw;
+	max-width: 400px;
 	height: 10px;
 	/* background: var(--black-dark); */
 	position: absolute;
@@ -535,7 +432,7 @@ input[name="shell3"]:checked ~ article nav li::after {
 	background: var(--black-dark);
 	border-radius: 2rem;
 
-	animation: bang 8.5s cubic-bezier(0.21, 0.54, 0.62, 0.99) 4s normal forwards;
+	animation: bang 8.5s cubic-bezier(0.21, 0.54, 0.62, 0.99) 4s normal;
 }
 
 nav li::before {
@@ -547,6 +444,123 @@ nav li::after {
 	--rotation: -60deg;
 	transform: rotateX(-60deg) scale(0);
 }
+
+/* ================= */
+/* Animations shell 1*/
+/* ================= */
+
+/* Animation shell1 flight */
+@keyframes shell1 {
+	0% {
+		top: 100%;
+		left: 20%;
+		transform: rotateZ(560deg);
+		border-radius: 0;
+	}
+	10% {
+		border-radius: 0;
+	}
+	45% {
+		border-radius: 50%;
+	}
+	50% {
+		border-radius: 0;
+	}
+	60% {
+		border-radius: 0;
+	}
+	65% {
+		border-radius: 50%;
+	}
+	95% {
+		border-radius: 50%;
+		background: var(--black);
+		transform: scale(1);
+	}
+	98% {
+		transform: scale(1.5);
+	}
+	100% {
+		top: 30%;
+		left: 60%;
+		transform: rotateZ(0deg) scale(1.5);
+		border-radius: 50%;
+		background: transparent;
+	}
+}
+
+/* Animation for explosion */
+@keyframes explosion1 {
+	0% {
+		transform: scale(0, 1);
+		transform-origin: left;
+	}
+	50% {
+		transform: scale(1, 1);
+		transform-origin: left;
+	}
+	60% {
+		transform: scale(1, 1);
+		transform-origin: right;
+	}
+	100% {
+		transform: scale(0, 1);
+		transform-origin: right;
+	}
+}
+/* ================== */
+/* Animations shell 2 */
+/* ================== */
+
+@keyframes shell2 {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: 40%;
+	}
+}
+
+/* Animation for rotating shell + circles */
+@keyframes rotate {
+	from {
+		transform: translate(-50%, -50%) rotate(0%);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes grow {
+	from {
+		clip-path: circle(0%);
+	}
+	to {
+		clip-path: circle(40%);
+	}
+}
+
+@keyframes grow2 {
+	from {
+		transform: scale(1.8);
+	}
+	to {
+		transform: scale(0.8);
+	}
+}
+
+@keyframes hypno {
+	from {
+		transform: rotate(var(--rotation)) translateX(10%);
+	}
+	to {
+		transform: rotate(var(--rotation)) translateX(60%);
+	}
+}
+
+/* ================== */
+/* Animations shell 3 */
+/* ================== */
 
 @keyframes shell3 {
 	0% {
