@@ -49,6 +49,10 @@
 	);
 }
 
+/* =============== */
+/* Generic styling */
+/* =============== */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -352,15 +356,6 @@ article > button:nth-child(2):active ~ nav {
 	animation-direction: reverse;
 }
 
-@keyframes spin {
-	from {
-		transform: rotateY(0);
-	}
-	to {
-		transform: rotateY(360deg);
-	}
-}
-
 nav ul {
 	list-style-type: none;
 	transform-origin: center;
@@ -576,6 +571,17 @@ nav li::after {
 	}
 }
 
+/* For rotation of the shell */
+@keyframes spin {
+	from {
+		transform: rotateY(0);
+	}
+	to {
+		transform: rotateY(360deg);
+	}
+}
+
+/* First variant of explosion */
 @keyframes bang {
 	0% {
 		transform: rotateX(var(--rotation)) scaleX(0%);
